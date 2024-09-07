@@ -3,12 +3,14 @@ using Task = System.Threading.Tasks.Task;
 
 public class GameRunningState : State<GameManager>
 {
+    private readonly Action _onScoreHandler;
     private readonly Action _onAllCardsMatchedHandler; 
     
     private Card _currentSelectedCard;
 
-    public GameRunningState(GameManager owner, Action onAllCardsMatchedHandler) : base(owner)
+    public GameRunningState(GameManager owner, Action onScoreHandler, Action onAllCardsMatchedHandler) : base(owner)
     {
+        _onScoreHandler = onScoreHandler;
         _onAllCardsMatchedHandler = onAllCardsMatchedHandler;
     }
 
@@ -33,7 +35,7 @@ public class GameRunningState : State<GameManager>
 
         if (_currentSelectedCard != null)
         {
-            Owner.Score.IncreaseTurns();
+            Owner.GameStateData.IncreaseTurns();
             
             if (_currentSelectedCard.SymbolId == card.SymbolId) OnMatchSuccess(_currentSelectedCard, card);
             else OnMatchFailed(_currentSelectedCard, card);
@@ -48,7 +50,9 @@ public class GameRunningState : State<GameManager>
 
     private async void OnMatchSuccess(Card previousCard, Card currentCard)
     {
-        Owner.Score.IncreaseMatches();
+        Owner.GameStateData.IncreaseMatches();
+        _onScoreHandler?.Invoke();
+        Owner.StreakBonus.IncreaseStreak();
         
         Owner.CardsOnTable.Remove(previousCard);
         Owner.CardsOnTable.Remove(currentCard);
@@ -66,6 +70,8 @@ public class GameRunningState : State<GameManager>
 
     private async void OnMatchFailed(Card previousCard, Card currentCard)
     {
+        Owner.StreakBonus.Reset();
+        
         await Task.Delay(500);
 
         previousCard.HideCard();

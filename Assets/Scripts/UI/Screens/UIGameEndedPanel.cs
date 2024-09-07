@@ -8,6 +8,7 @@ public class UIGameEndedPanel : UIBasePanel
 {
     [SerializeField] public TextMeshProUGUI MatchesTextfield;
     [SerializeField] public TextMeshProUGUI TurnsTextfield;
+    [SerializeField] public TextMeshProUGUI ScoreTextfield;
 
     [SerializeField] public Button RestartButton;
 
@@ -15,12 +16,13 @@ public class UIGameEndedPanel : UIBasePanel
 
     private Action _onRestartHandler;
     
-    public void Initialize(Score score, Action onRestartHandler)
+    public void Initialize(GameStateData gameStateData, Action onRestartHandler)
     {
         _onRestartHandler = onRestartHandler;
         
-        MatchesTextfield.text = $"Matches: {score.Matches}";
-        TurnsTextfield.text = $"Turns: {score.Turns}";
+        MatchesTextfield.text = $"Matches: {gameStateData.Matches}";
+        TurnsTextfield.text = $"Turns: {gameStateData.Turns}";
+        ScoreTextfield.text = $"Score: {gameStateData.Score}";
     }
 
     private void Start()

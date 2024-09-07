@@ -10,15 +10,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIGameManager UIManager;
 
     public IList<Card> CardsOnTable { get; private set; }
-    public Score Score { get; private set; }
-    public UIGameManager UI => UIManager;
+    public GameStateData GameStateData { get; private set; }
     
+    public StreakBonus StreakBonus { get; private set; }
+
+    public UIGameManager UI => UIManager;
+
     private StateMachine<GameManager> _stateMachine;
+    private BonusManager _bonusManager;
 
     private void Awake()
     {
         _stateMachine = new StateMachine<GameManager>(this);
-        Score = new Score();
+        GameStateData = new GameStateData();
+        
+        _bonusManager = new BonusManager();
+
+        StreakBonus = new StreakBonus(10);
+        _bonusManager.AddBonus(StreakBonus);
     }
 
     private void Start()
@@ -48,7 +57,7 @@ public class GameManager : MonoBehaviour
     private void StartGame(IList<Card> cards)
     {
         CardsOnTable = cards;
-        _stateMachine.ChangeTo(new GameRunningState(this, EndGame));
+        _stateMachine.ChangeTo(new GameRunningState(this, Score, EndGame));
     }
 
     private void EndGame()
@@ -60,5 +69,13 @@ public class GameManager : MonoBehaviour
     {
         var currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+    }
+
+    private void Score()
+    {
+        const int baseScore = 100;
+        var calculatedScore = _bonusManager.Calculate(baseScore);
+        
+        GameStateData.AddScore(calculatedScore);
     }
 }

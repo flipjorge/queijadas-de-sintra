@@ -14,7 +14,7 @@ public class GameEndState : State<GameManager>
     public override async void Enter()
     {
         _panel = Owner.UI.InstantiatePanel<UIGameEndedPanel>();
-        _panel.Initialize(Owner.Score, _onRestartHandler);
+        _panel.Initialize(Owner.GameStateData, _onRestartHandler);
 
         await _panel.Show();
     }

@@ -11,7 +11,7 @@ public class GameInitializeState : State<GameManager>
 
     public override void Enter()
     {
-        Owner.Score.Reset();
+        Owner.GameStateData.Reset();
         
         _onCompleteHandler?.Invoke();
     }
