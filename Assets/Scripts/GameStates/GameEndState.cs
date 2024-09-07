@@ -1,15 +1,22 @@
-using UnityEngine;
+using System;
 
 public class GameEndState : State<GameManager>
 {
-    public GameEndState(GameManager owner) : base(owner)
+    private readonly Action _onRestartHandler;
+
+    private UIGameEndedPanel _panel;
+
+    public GameEndState(GameManager owner, Action onRestartHandler) : base(owner)
     {
-        //
+        _onRestartHandler = onRestartHandler;
     }
 
-    public override void Enter()
+    public override async void Enter()
     {
-        Debug.Log("Game Ended");
+        _panel = Owner.UI.InstantiatePanel<UIGameEndedPanel>();
+        _panel.Initialize(Owner.Score, _onRestartHandler);
+
+        await _panel.Show();
     }
 
     public override void Update()
@@ -17,8 +24,8 @@ public class GameEndState : State<GameManager>
         //
     }
 
-    public override void Exit()
+    public override async void Exit()
     {
-        //
+        await _panel.Hide();
     }
 }

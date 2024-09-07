@@ -12,7 +12,7 @@ public class Score
     {
         Matches++;
 
-        Debug.Log($"Matches:{Matches}"); 
+        Debug.Log($"Matches:{Matches}");
         
         OnMatchesChanged?.Invoke(Matches);
     }

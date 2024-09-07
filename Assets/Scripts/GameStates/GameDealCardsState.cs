@@ -56,13 +56,22 @@ public class GameDealCardsState : State<GameManager>
             }
         }
 
-        await Task.Delay(3000);
+        var startingPanel = Owner.UI.InstantiatePanel<UIGameStartingPanel>();
+        startingPanel.SetMessage("Ready");
 
+        await Task.WhenAll(Task.Delay(3000), startingPanel.Show());
+        
         foreach (var card in dealtCards) card.HideCard();
-
-        await Task.Delay(500);
-
+        
+        startingPanel.SetMessage("Set");
+        
+        await Task.Delay(1000);
+        
+        startingPanel.SetMessage("Go!");
+        
         _onCardsDealtHandler?.Invoke(dealtCards);
+        
+        await startingPanel.Hide(1000);
     }
 
     public override void Update()
