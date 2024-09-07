@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,8 +6,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelLayoutSO LevelLayout;
     [SerializeField] private Card CardPrefab;
     [SerializeField] private GameObject CardsContainer;
+
+    public IList<Card> CardsOnTable => _cardsOnTable;
     
     private StateMachine<GameManager> _stateMachine;
+    private IList<Card> _cardsOnTable;
 
     private void Awake()
     {
@@ -15,7 +19,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _stateMachine.ChangeTo(new GameInitializeState(this));
+        var state = new GameInitializeState(this, DealCards);
+        
+        _stateMachine.ChangeTo(state);
     }
 
     private void Update()
@@ -23,8 +29,26 @@ public class GameManager : MonoBehaviour
         _stateMachine.Update();
     }
 
-    public void DealCards()
+    private void DealCards()
     {
-        _stateMachine.ChangeTo(new GameDealCardsState(this, LevelLayout.Layout, CardPrefab, CardsContainer));
+        var state = new GameDealCardsState(
+            this,
+            LevelLayout.Layout,
+            CardPrefab,
+            CardsContainer,
+            StartGame);
+        
+        _stateMachine.ChangeTo(state);
+    }
+
+    private void StartGame(IList<Card> cards)
+    {
+        _cardsOnTable = cards;
+        _stateMachine.ChangeTo(new GameRunningState(this, EndGame));
+    }
+
+    private void EndGame()
+    {
+        _stateMachine.ChangeTo(new GameEndState(this));
     }
 }

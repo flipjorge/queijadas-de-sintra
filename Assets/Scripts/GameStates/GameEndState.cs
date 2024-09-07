@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class GameEndState : State<GameManager>
 {
     public GameEndState(GameManager owner) : base(owner)
@@ -7,7 +9,7 @@ public class GameEndState : State<GameManager>
 
     public override void Enter()
     {
-        //
+        Debug.Log("Game Ended");
     }
 
     public override void Update()
