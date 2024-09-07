@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,7 +8,7 @@ public class Card : MonoBehaviour
     [SerializeField] private Transform FacesContainer;
 
     public event CardArgs OnCardClicked;
-    
+
     public int SymbolId { get; private set; }
 
     private StateMachine<Card> _stateMachine;
@@ -37,7 +36,7 @@ public class Card : MonoBehaviour
     private void OnMouseDown()
     {
         if (_currentFaceDirection == FaceDirection.Up) return;
-        
+
         OnCardClicked?.Invoke(this);
     }
 
@@ -57,11 +56,12 @@ public class Card : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
-    
+
     public enum FaceDirection { Up, Down }
 
     public delegate void CardArgs(Card card);
+
     public delegate void CardsArgs(IList<Card> cards);
 }

@@ -27,41 +27,45 @@ public class GameRunningState : State<GameManager>
         foreach (var card in Owner.CardsOnTable) card.OnCardClicked -= OnCardClickedHandler;
     }
 
-    private async void OnCardClickedHandler(Card card)
+    private void OnCardClickedHandler(Card card)
     {
         card.ShowCard();
 
         if (_currentSelectedCard != null)
         {
-            var previousCard = _currentSelectedCard;
+            
+            if (_currentSelectedCard.SymbolId == card.SymbolId) OnMatchSuccess(_currentSelectedCard, card);
+            else OnMatchFailed(_currentSelectedCard, card);
+            
             _currentSelectedCard = null;
-
-            if (previousCard.SymbolId == card.SymbolId)
-            {
-                Owner.CardsOnTable.Remove(card);
-                Owner.CardsOnTable.Remove(previousCard);
-
-                if (Owner.CardsOnTable.Count == 0)
-                {
-                    _onAllCardsMatchedHandler?.Invoke();
-                }
-                    
-                await Task.Delay(500);
-
-                previousCard.Destroy();
-                card.Destroy();
-            }
-            else
-            {
-                await Task.Delay(500);
-
-                previousCard.HideCard();
-                card.HideCard();
-            }
-
-            return;
         }
+        else
+        {
+            _currentSelectedCard = card;
+        }
+    }
 
-        _currentSelectedCard = card;
+    private async void OnMatchSuccess(Card previousCard, Card currentCard)
+    {
+        Owner.CardsOnTable.Remove(previousCard);
+        Owner.CardsOnTable.Remove(currentCard);
+
+        if (Owner.CardsOnTable.Count == 0)
+        {
+            _onAllCardsMatchedHandler?.Invoke();
+        }
+                    
+        await Task.Delay(500);
+
+        previousCard.Destroy();
+        currentCard.Destroy();
+    }
+
+    private async void OnMatchFailed(Card previousCard, Card currentCard)
+    {
+        await Task.Delay(500);
+
+        previousCard.HideCard();
+        currentCard.HideCard();
     }
 }
