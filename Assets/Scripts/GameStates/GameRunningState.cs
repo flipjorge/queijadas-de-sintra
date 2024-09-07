@@ -33,6 +33,7 @@ public class GameRunningState : State<GameManager>
 
         if (_currentSelectedCard != null)
         {
+            Owner.Score.IncreaseTurns();
             
             if (_currentSelectedCard.SymbolId == card.SymbolId) OnMatchSuccess(_currentSelectedCard, card);
             else OnMatchFailed(_currentSelectedCard, card);
@@ -47,6 +48,8 @@ public class GameRunningState : State<GameManager>
 
     private async void OnMatchSuccess(Card previousCard, Card currentCard)
     {
+        Owner.Score.IncreaseMatches();
+        
         Owner.CardsOnTable.Remove(previousCard);
         Owner.CardsOnTable.Remove(currentCard);
 

@@ -8,13 +8,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject CardsContainer;
 
     public IList<Card> CardsOnTable => _cardsOnTable;
+    public Score Score => _score;
     
     private StateMachine<GameManager> _stateMachine;
     private IList<Card> _cardsOnTable;
+    private Score _score;
 
     private void Awake()
     {
         _stateMachine = new StateMachine<GameManager>(this);
+        _score = new Score();
     }
 
     private void Start()
