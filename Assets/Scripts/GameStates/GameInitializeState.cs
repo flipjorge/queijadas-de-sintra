@@ -3,7 +3,7 @@ using System;
 public class GameInitializeState : State<GameManager>
 {
     private readonly Action _onCompleteHandler;
-    
+
     public GameInitializeState(GameManager owner, Action onCompleteHandler) : base(owner)
     {
         _onCompleteHandler = onCompleteHandler;
@@ -12,7 +12,12 @@ public class GameInitializeState : State<GameManager>
     public override void Enter()
     {
         Owner.GameStateData.Reset();
-        
+
+        var highScore = SaveData.LoadHighScore();
+
+        var statsPanel = Owner.UI.InstantiateGUI<UIGameStats>();
+        statsPanel.Initialize(Owner.GameStateData, highScore);
+
         _onCompleteHandler?.Invoke();
     }
 

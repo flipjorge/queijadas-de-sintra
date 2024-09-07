@@ -411,6 +411,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1163624925565343295, guid: 65132efd071a1e045b3638b47664a49b,
         type: 3}
+      propertyPath: GUIContainer
+      value: 
+      objectReference: {fileID: 7192758500213108443}
+    - target: {fileID: 1163624925565343295, guid: 65132efd071a1e045b3638b47664a49b,
+        type: 3}
+      propertyPath: PanelsContainer
+      value: 
+      objectReference: {fileID: 850289686}
+    - target: {fileID: 1163624925565343295, guid: 65132efd071a1e045b3638b47664a49b,
+        type: 3}
       propertyPath: PopupsContainer
       value: 
       objectReference: {fileID: 850289686}
@@ -423,6 +433,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4398780771336276468, guid: b5e37a34526ee8e43a30b7d461c29653,
+        type: 3}
+      propertyPath: m_Name
+      value: GameUIContainer
+      objectReference: {fileID: 0}
     - target: {fileID: 7192758499933063364, guid: b5e37a34526ee8e43a30b7d461c29653,
         type: 3}
       propertyPath: m_Name
@@ -485,3 +500,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e37a34526ee8e43a30b7d461c29653, type: 3}
+--- !u!224 &7192758500213108443 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 160259323383760831, guid: b5e37a34526ee8e43a30b7d461c29653,
+    type: 3}
+  m_PrefabInstance: {fileID: 7192758500213108442}
+  m_PrefabAsset: {fileID: 0}
