@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216f8d529305ffb429123f532ecdd45c, type: 3}
   m_Name: 5x6
   m_EditorClassIdentifier: 
-  Layout: {x: 5, y: 6}
+  Layout:
+    Columns: 5
+    Rows: 6
+    Space: {x: 2, y: 2.5}

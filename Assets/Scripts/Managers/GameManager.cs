@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private LevelLayoutSO LevelLayout;
+    [SerializeField] private Card CardPrefab;
+    [SerializeField] private GameObject CardsContainer;
+    
     private StateMachine<GameManager> _stateMachine;
 
     private void Awake()
@@ -17,5 +21,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _stateMachine.Update();
+    }
+
+    public void DealCards()
+    {
+        _stateMachine.ChangeTo(new GameDealCardsState(this, LevelLayout.Layout, CardPrefab, CardsContainer));
     }
 }
