@@ -13,6 +13,12 @@ public class GameEndState : State<GameManager>
 
     public override async void Enter()
     {
+        SaveData.SaveGame(
+            Owner.GameStateData.Turns,
+            Owner.GameStateData.Matches,
+            Owner.GameStateData.Score
+        );
+        
         _panel = Owner.UI.InstantiatePanel<UIGameEndedPanel>();
         _panel.Initialize(Owner.GameStateData, _onRestartHandler);
 
