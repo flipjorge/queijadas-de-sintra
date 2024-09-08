@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class CardFaceUpState : State<Card>
@@ -16,7 +17,11 @@ public class CardFaceUpState : State<Card>
 
     public override void Enter()
     {
-        _transform.rotation = Quaternion.Euler(0, 0, 0);
+        var delay = Random.Range(0, 0.2f);
+        
+        _transform.DORotate(new Vector3(0, 0, 0), .15f).SetEase(Ease.OutSine).SetDelay(delay);
+        _transform.DOPunchPosition(new Vector3(0, 2, 0), .3f, 10, 0).SetDelay(delay);
+        
         _audioManager.PlayFlip();
     }
 
