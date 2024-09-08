@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelLayoutSO LevelLayout;
     [SerializeField] private Card CardPrefab;
+    [SerializeField] private SpritesCollectionSO SymbolsCollection;
     [SerializeField] private GameObject CardsContainer;
     [SerializeField] private UIGameManager UIManager;
     [SerializeField] private VoiceAudioManager VoiceAudioManager;
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
             LevelLayout.Layout,
             CardPrefab,
             CardsContainer,
+            SymbolsCollection,
             VoiceAudioManager,
             StartGame);
 

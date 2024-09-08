@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SymbolsAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: bec83ee002904bc49be31f9028c1c402, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0cfbd4c3f82cbe041b319ddb11d2a79a, type: 3}
+  - {fileID: 21300000, guid: 8b145de3c7800514980df0d3bf631374, type: 3}
+  - {fileID: 21300000, guid: 3b6a1514ff42e56458a8fdc2175f1b95, type: 3}
+  - {fileID: 21300000, guid: 96af8f15e0187834cb57ee19eb664b41, type: 3}
+  - {fileID: 21300000, guid: 2eb0874557ec594409400a339ecb3a2a, type: 3}
+  - {fileID: 21300000, guid: 8834d07552d39ae49b745c5adbabb661, type: 3}
+  - {fileID: 21300000, guid: 05a70247ba0712841b43606d9c0920f8, type: 3}
+  - {fileID: 21300000, guid: c0854957ef1a29e45af7abcc414593b8, type: 3}
+  - {fileID: 21300000, guid: 23c215e7428e08c45a233c6b3cb2bd67, type: 3}
+  - {fileID: 21300000, guid: 1600bc094ff1e4047b8a5caca6602726, type: 3}
+  - {fileID: 21300000, guid: e89dc599205534445aefccdc95e1e465, type: 3}
+  - {fileID: 21300000, guid: 1630fdab126cc8748a0407425a630591, type: 3}
+  - {fileID: 21300000, guid: 6048337dc60f4804a8a4c08f7eefa144, type: 3}
+  - {fileID: 21300000, guid: d5eb43fd98b9a294bb09209fcc825d96, type: 3}
+  - {fileID: 21300000, guid: 1ae6917fcbd622245bdb3ab30daa98ee, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - genericItem_color_003
+  - genericItem_color_141
+  - genericItem_color_155
+  - genericItem_color_158
+  - genericItem_color_147
+  - genericItem_color_135
+  - genericItem_color_101
+  - genericItem_color_082
+  - genericItem_color_034
+  - genericItem_color_132
+  - genericItem_color_119
+  - genericItem_color_162
+  - genericItem_color_124
+  - genericItem_color_085
+  - genericItem_color_023
+  m_RenderDataMap: {}
+  m_Tag: SymbolsAtlas
+  m_IsVariant: 0

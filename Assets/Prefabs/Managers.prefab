@@ -49,9 +49,10 @@ MonoBehaviour:
   LevelLayout: {fileID: 11400000, guid: 0ef4bc489ef901741b1b0423c317a143, type: 2}
   CardPrefab: {fileID: 6815800221376940902, guid: f06af2d0cf39f8c40bf08720752d8746,
     type: 3}
+  SymbolsCollection: {fileID: 11400000, guid: 11fc8fe3fe26ac648a24e4818183c49f, type: 2}
   CardsContainer: {fileID: 0}
   UIManager: {fileID: 1163624925565343295}
-  VoiceAudioManager: {fileID: 0}
+  VoiceAudioManager: {fileID: 2659409713790287992}
 --- !u!114 &1163624925565343295
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class GameDealCardsState : State<GameManager>
     private readonly LevelLayout _layout;
     private readonly Card _cardPrefab;
     private readonly GameObject _cardsContainer;
+    private readonly SpritesCollectionSO _symbolsSprites;
     private readonly Card.CardsArgs _onCardsDealtHandler;
     private readonly VoiceAudioManager _voiceAudioManager;
 
@@ -16,6 +17,7 @@ public class GameDealCardsState : State<GameManager>
         LevelLayout layout,
         Card cardPrefab,
         GameObject cardsContainer,
+        SpritesCollectionSO symbolsSprites,
         VoiceAudioManager voiceAudioManager,
         Card.CardsArgs onCardsDealtHandler) :
         base(owner)
@@ -23,6 +25,7 @@ public class GameDealCardsState : State<GameManager>
         _layout = layout;
         _cardPrefab = cardPrefab;
         _cardsContainer = cardsContainer;
+        _symbolsSprites = symbolsSprites;
         _onCardsDealtHandler = onCardsDealtHandler;
         _voiceAudioManager = voiceAudioManager;
     }
@@ -41,6 +44,8 @@ public class GameDealCardsState : State<GameManager>
 
         symbols.Shuffle();
 
+        var symbolSprites = _symbolsSprites.GetInRandomOrder();
+
         var offsetX = (_layout.Columns - 1) * _layout.Space.x / 2;
         var offsetY = (_layout.Rows - 1) * _layout.Space.y / 2;
 
@@ -53,11 +58,13 @@ public class GameDealCardsState : State<GameManager>
             for (var row = 0; row < _layout.Rows; row++)
             {
                 var symbolIndex = column * _layout.Rows + row;
+                var symbolId = symbols[symbolIndex];
+                var sprite = symbolSprites[symbolId];
                 var rowPosition = row * _layout.Space.y - offsetY;
                 var position = new Vector3(columnPosition, 0, rowPosition);
 
                 var card = Object.Instantiate(_cardPrefab, position, Quaternion.identity, _cardsContainer.transform);
-                card.Initialize(symbols[symbolIndex]);
+                card.Initialize(symbolId, sprite);
 
                 dealtCards.Add(card);
             }

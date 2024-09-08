@@ -435,18 +435,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1793336734 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2659409713790287992, guid: 65132efd071a1e045b3638b47664a49b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1163624924136928162}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a46b6c50c2f6ad745aca4469c2f456ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1904179375
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,11 +483,6 @@ PrefabInstance:
       propertyPath: CardsContainer
       value: 
       objectReference: {fileID: 1904179375}
-    - target: {fileID: 1163624925565343289, guid: 65132efd071a1e045b3638b47664a49b,
-        type: 3}
-      propertyPath: VoiceAudioManager
-      value: 
-      objectReference: {fileID: 1793336734}
     - target: {fileID: 1163624925565343294, guid: 65132efd071a1e045b3638b47664a49b,
         type: 3}
       propertyPath: m_RootOrder

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro SymbolIdTextfield;
     [SerializeField] private Transform FacesContainer;
+    [SerializeField] private SpriteRenderer SymbolSpriteRenderer;
+    [SerializeField] private SpriteRenderer SymbolShadowSpriteRenderer;
     [SerializeField] private CardAudioManager CardAudioManager;
 
     public event CardArgs OnCardClicked;
@@ -15,12 +15,13 @@ public class Card : MonoBehaviour
     private StateMachine<Card> _stateMachine;
     private FaceDirection _currentFaceDirection;
 
-    public void Initialize(int symbolId, FaceDirection startingFaceDirection = FaceDirection.Up)
+    public void Initialize(int symbolId, Sprite symbolSprite, FaceDirection startingFaceDirection = FaceDirection.Up)
     {
         SymbolId = symbolId;
         _currentFaceDirection = startingFaceDirection;
 
-        SymbolIdTextfield.text = SymbolId.ToString();
+        SymbolSpriteRenderer.sprite = symbolSprite;
+        SymbolShadowSpriteRenderer.sprite = symbolSprite;
     }
 
     private void Awake()
@@ -52,7 +53,7 @@ public class Card : MonoBehaviour
         _currentFaceDirection = FaceDirection.Down;
         _stateMachine.ChangeTo(new CardFaceDownState(this, FacesContainer, CardAudioManager));
     }
-    
+
     public void Destroy()
     {
         Destroy(gameObject);
