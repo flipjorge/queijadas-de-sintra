@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -46,6 +47,7 @@ public class UIGameStats : UIBasePanel
     private void UpdateScore(int value)
     {
         ScoreTextfield.text = $"Score: {value}";
+        ScoreTextfield.rectTransform.DOPunchScale(new Vector3(1.01f, 1.01f, 1f), .3f, 10, 0);
     }
 
     private void UpdateHighScore(int value)

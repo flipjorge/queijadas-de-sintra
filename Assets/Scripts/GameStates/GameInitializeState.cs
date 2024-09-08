@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 public class GameInitializeState : State<GameManager>
 {
@@ -9,7 +10,7 @@ public class GameInitializeState : State<GameManager>
         _onCompleteHandler = onCompleteHandler;
     }
 
-    public override void Enter()
+    public override async void Enter()
     {
         Owner.GameStateData.Reset();
 
@@ -18,6 +19,8 @@ public class GameInitializeState : State<GameManager>
         var statsPanel = Owner.UI.InstantiateGUI<UIGameStats>();
         statsPanel.Initialize(Owner.GameStateData, highScore);
 
+        await Task.Delay(600);
+        
         _onCompleteHandler?.Invoke();
     }
 
