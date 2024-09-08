@@ -1,7 +1,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(menuName = "AudioCollection")]
+[CreateAssetMenu(menuName = "Audio Collection")]
 public class AudioCollectionSO : ScriptableObject
 {
     public AudioClip[] Clips;

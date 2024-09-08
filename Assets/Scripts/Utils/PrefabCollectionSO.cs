@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PrefabCollection")]
+[CreateAssetMenu(menuName = "Prefab Collection")]
 public class PrefabCollectionSO : ScriptableObject
 {
     public GameObject[] Prefabs;

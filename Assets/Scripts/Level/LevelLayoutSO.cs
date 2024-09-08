@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "GameSettings")]
+[CreateAssetMenu(menuName = "Level Layout")]
 public class LevelLayoutSO : ScriptableObject
 {
     public LevelLayout Layout = new LevelLayout()
