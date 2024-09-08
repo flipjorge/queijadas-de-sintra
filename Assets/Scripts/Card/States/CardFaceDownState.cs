@@ -20,7 +20,7 @@ public class CardFaceDownState : State<Card>
         var delay = Random.Range(0, 0.2f);
         
         _transform.DORotate(new Vector3(0, 0, 180), .15f).SetEase(Ease.OutSine).SetDelay(delay);
-        _transform.DOPunchPosition(new Vector3(0, 2, 0), .3f, 10, 0).SetDelay(delay);
+        _transform.DOPunchPosition(new Vector3(0, .8f, 0), .3f, 10, 0).SetDelay(delay);
         
         _audioManager.PlayFlip();
     }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea1ad57332830043a7e97a11c763611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelLayout: {fileID: 11400000, guid: 0ef4bc489ef901741b1b0423c317a143, type: 2}
+  LevelLayout: {fileID: 11400000, guid: 88f65a1ba8515a64580fc85e89cc4a32, type: 2}
   CardPrefab: {fileID: 6815800221376940902, guid: f06af2d0cf39f8c40bf08720752d8746,
     type: 3}
   SymbolsCollection: {fileID: 11400000, guid: 11fc8fe3fe26ac648a24e4818183c49f, type: 2}

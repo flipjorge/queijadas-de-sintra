@@ -53,17 +53,17 @@ public class GameDealCardsState : State<GameManager>
 
         for (var column = 0; column < _layout.Columns; column++)
         {
-            var columnPosition = column * _layout.Space.x - offsetX;
+            var columnPosition = _cardsContainer.transform.position.x + (column * _layout.Space.x - offsetX);
 
             for (var row = 0; row < _layout.Rows; row++)
             {
                 var symbolIndex = column * _layout.Rows + row;
                 var symbolId = symbols[symbolIndex];
                 var sprite = symbolSprites[symbolId];
-                var rowPosition = row * _layout.Space.y - offsetY;
-                var position = new Vector3(columnPosition, 0, rowPosition);
+                var rowPosition = _cardsContainer.transform.position.z + (row * _layout.Space.y - offsetY);
+                var position = new Vector3(columnPosition, _cardsContainer.transform.position.y, rowPosition);
 
-                var card = Object.Instantiate(_cardPrefab, position, Quaternion.identity, _cardsContainer.transform);
+                var card = Object.Instantiate(_cardPrefab, position, _cardsContainer.transform.rotation, _cardsContainer.transform);
                 card.Initialize(symbolId, sprite);
 
                 dealtCards.Add(card);

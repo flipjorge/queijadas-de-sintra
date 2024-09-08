@@ -15,4 +15,4 @@ MonoBehaviour:
   Layout:
     Columns: 2
     Rows: 3
-    Space: {x: 2, y: 2.5}
+    Space: {x: 0.63, y: 0.72}
