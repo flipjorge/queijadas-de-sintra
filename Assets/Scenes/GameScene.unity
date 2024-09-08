@@ -136,7 +136,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &14144488
 Transform:
@@ -293,8 +293,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -569,6 +569,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laptop
       objectReference: {fileID: 0}
+    - target: {fileID: 7568842863659840353, guid: 4d203bb4c0d9d98419970d2afc740efe,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d203bb4c0d9d98419970d2afc740efe, type: 3}
 --- !u!4 &543450652143882466 stripped
@@ -688,6 +693,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bread
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808573889022892449, guid: 20ceee456e4a0b54b9926dc3b29a4187,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4580465838451704603, guid: 20ceee456e4a0b54b9926dc3b29a4187,
         type: 3}
@@ -819,6 +829,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plate
       objectReference: {fileID: 0}
+    - target: {fileID: 6607267181854608127, guid: 1daef68ea77ab154ba07e5bb3f7b8d75,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1daef68ea77ab154ba07e5bb3f7b8d75, type: 3}
 --- !u!4 &7106344001788141698 stripped
@@ -834,11 +849,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4398780771336276468, guid: b5e37a34526ee8e43a30b7d461c29653,
-        type: 3}
-      propertyPath: m_Name
-      value: GameUIContainer
-      objectReference: {fileID: 0}
     - target: {fileID: 7192758499933063364, guid: b5e37a34526ee8e43a30b7d461c29653,
         type: 3}
       propertyPath: m_Name
@@ -924,6 +934,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 3578057193043143145, guid: 5e96c89049a3b1d41a38be50c30c045e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4245769252338824019, guid: 5e96c89049a3b1d41a38be50c30c045e,
         type: 3}
@@ -1048,6 +1063,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SodaGlass
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025934869108316921, guid: 079e2d13c7f91c1409b0258972c2055f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161505948808125612, guid: 079e2d13c7f91c1409b0258972c2055f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680718958891279835, guid: 079e2d13c7f91c1409b0258972c2055f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 079e2d13c7f91c1409b0258972c2055f, type: 3}
