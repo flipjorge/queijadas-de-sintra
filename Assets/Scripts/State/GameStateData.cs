@@ -14,8 +14,6 @@ public class GameStateData
     {
         Matches++;
 
-        Debug.Log($"Matches:{Matches}");
-
         OnMatchesChanged?.Invoke(Matches);
     }
 
@@ -23,16 +21,12 @@ public class GameStateData
     {
         Turns++;
 
-        Debug.Log($"Turns:{Turns}");
-
         OnTurnsChanged?.Invoke(Turns);
     }
 
     public void AddScore(int score)
     {
         Score += score;
-
-        Debug.Log($"Score: {Score}");
 
         OnScoreChanged?.Invoke(Score);
     }
