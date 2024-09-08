@@ -3,15 +3,21 @@ using UnityEngine;
 public class CardFaceUpState : State<Card>
 {
     private readonly Transform _transform;
-    
-    public CardFaceUpState(Card card, Transform transform) : base(card)
+    private readonly CardAudioManager _audioManager;
+
+    public CardFaceUpState(
+        Card card,
+        Transform transform,
+        CardAudioManager audioManager) : base(card)
     {
         _transform = transform;
+        _audioManager = audioManager;
     }
 
     public override void Enter()
     {
         _transform.rotation = Quaternion.Euler(0, 0, 0);
+        _audioManager.PlayFlip();
     }
 
     public override void Update()

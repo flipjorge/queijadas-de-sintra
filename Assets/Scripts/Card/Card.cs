@@ -6,6 +6,7 @@ public class Card : MonoBehaviour
 {
     [SerializeField] private TextMeshPro SymbolIdTextfield;
     [SerializeField] private Transform FacesContainer;
+    [SerializeField] private CardAudioManager CardAudioManager;
 
     public event CardArgs OnCardClicked;
 
@@ -40,20 +41,18 @@ public class Card : MonoBehaviour
         OnCardClicked?.Invoke(this);
     }
 
-    [ContextMenu("Show")]
     public void ShowCard()
     {
         _currentFaceDirection = FaceDirection.Up;
-        _stateMachine.ChangeTo(new CardFaceUpState(this, FacesContainer));
+        _stateMachine.ChangeTo(new CardFaceUpState(this, FacesContainer, CardAudioManager));
     }
 
-    [ContextMenu("Hide")]
     public void HideCard()
     {
         _currentFaceDirection = FaceDirection.Down;
-        _stateMachine.ChangeTo(new CardFaceDownState(this, FacesContainer));
+        _stateMachine.ChangeTo(new CardFaceDownState(this, FacesContainer, CardAudioManager));
     }
-
+    
     public void Destroy()
     {
         Destroy(gameObject);

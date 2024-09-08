@@ -9,8 +9,14 @@ public class GameDealCardsState : State<GameManager>
     private readonly Card _cardPrefab;
     private readonly GameObject _cardsContainer;
     private readonly Card.CardsArgs _onCardsDealtHandler;
+    private readonly VoiceAudioManager _voiceAudioManager;
 
-    public GameDealCardsState(GameManager owner, LevelLayout layout, Card cardPrefab, GameObject cardsContainer,
+    public GameDealCardsState(
+        GameManager owner,
+        LevelLayout layout,
+        Card cardPrefab,
+        GameObject cardsContainer,
+        VoiceAudioManager voiceAudioManager,
         Card.CardsArgs onCardsDealtHandler) :
         base(owner)
     {
@@ -18,6 +24,7 @@ public class GameDealCardsState : State<GameManager>
         _cardPrefab = cardPrefab;
         _cardsContainer = cardsContainer;
         _onCardsDealtHandler = onCardsDealtHandler;
+        _voiceAudioManager = voiceAudioManager;
     }
 
     public override async void Enter()
@@ -58,16 +65,19 @@ public class GameDealCardsState : State<GameManager>
 
         var startingPanel = Owner.UI.InstantiatePanel<UIGameStartingPanel>();
         startingPanel.SetMessage("Ready");
+        _voiceAudioManager.PlayStarting(VoiceAudioManager.StartingPhase.Ready);
 
         await Task.WhenAll(Task.Delay(3000), startingPanel.Show());
         
         foreach (var card in dealtCards) card.HideCard();
         
         startingPanel.SetMessage("Set");
+        _voiceAudioManager.PlayStarting(VoiceAudioManager.StartingPhase.Set);
         
         await Task.Delay(1000);
         
         startingPanel.SetMessage("Go!");
+        _voiceAudioManager.PlayStarting(VoiceAudioManager.StartingPhase.Go);
         
         _onCardsDealtHandler?.Invoke(dealtCards);
         

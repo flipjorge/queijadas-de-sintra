@@ -3,13 +3,15 @@ using Task = System.Threading.Tasks.Task;
 
 public class GameRunningState : State<GameManager>
 {
+    private readonly VoiceAudioManager _voiceAudioManager;
     private readonly Action _onScoreHandler;
-    private readonly Action _onAllCardsMatchedHandler; 
+    private readonly Action _onAllCardsMatchedHandler;
     
     private Card _currentSelectedCard;
 
-    public GameRunningState(GameManager owner, Action onScoreHandler, Action onAllCardsMatchedHandler) : base(owner)
+    public GameRunningState(GameManager owner, VoiceAudioManager voiceAudioManager, Action onScoreHandler, Action onAllCardsMatchedHandler) : base(owner)
     {
+        _voiceAudioManager = voiceAudioManager;
         _onScoreHandler = onScoreHandler;
         _onAllCardsMatchedHandler = onAllCardsMatchedHandler;
     }
@@ -61,6 +63,8 @@ public class GameRunningState : State<GameManager>
         {
             _onAllCardsMatchedHandler?.Invoke();
         }
+        
+        _voiceAudioManager.PlayCorrect();
                     
         await Task.Delay(500);
 
@@ -71,6 +75,8 @@ public class GameRunningState : State<GameManager>
     private async void OnMatchFailed(Card previousCard, Card currentCard)
     {
         Owner.StreakBonus.Reset();
+        
+        _voiceAudioManager.PlayWrong();
         
         await Task.Delay(500);
 

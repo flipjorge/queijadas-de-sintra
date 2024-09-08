@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1163624925565343294}
   - component: {fileID: 1163624925565343289}
   - component: {fileID: 1163624925565343295}
+  - component: {fileID: 2659409713790287992}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
     type: 3}
   CardsContainer: {fileID: 0}
   UIManager: {fileID: 1163624925565343295}
+  VoiceAudioManager: {fileID: 0}
 --- !u!114 &1163624925565343295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,5 +64,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6808beddb2b52d34290825ca133dd9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PopupsContainer: {fileID: 0}
+  PanelsContainer: {fileID: 0}
+  GUIContainer: {fileID: 0}
   PrefabsCollection: {fileID: 11400000, guid: 75bd961011dcfc945b2cc4141daa81b6, type: 2}
+--- !u!114 &2659409713790287992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163624925565343288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46b6c50c2f6ad745aca4469c2f456ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 0}
+  CorrectClips: {fileID: 11400000, guid: 26db4543dab29694c97a338e541cba8c, type: 2}
+  WrongClips: {fileID: 11400000, guid: e2facf9fcbd5ddf4cbdfbf9b876c2d9f, type: 2}
+  StartingClips: {fileID: 11400000, guid: 8a0be4f4b00ad9e40bf8a5800b026dc5, type: 2}
+  FinishClips: {fileID: 11400000, guid: 1dfb7e467dc70fa44b77eb859be91aaf, type: 2}

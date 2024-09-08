@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Card CardPrefab;
     [SerializeField] private GameObject CardsContainer;
     [SerializeField] private UIGameManager UIManager;
+    [SerializeField] private VoiceAudioManager VoiceAudioManager;
 
     public IList<Card> CardsOnTable { get; private set; }
     public GameStateData GameStateData { get; private set; }
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
             LevelLayout.Layout,
             CardPrefab,
             CardsContainer,
+            VoiceAudioManager,
             StartGame);
 
         _stateMachine.ChangeTo(state);
@@ -57,12 +59,12 @@ public class GameManager : MonoBehaviour
     private void StartGame(IList<Card> cards)
     {
         CardsOnTable = cards;
-        _stateMachine.ChangeTo(new GameRunningState(this, Score, EndGame));
+        _stateMachine.ChangeTo(new GameRunningState(this, VoiceAudioManager, Score, EndGame));
     }
 
     private void EndGame()
     {
-        _stateMachine.ChangeTo(new GameEndState(this, RestartGame));
+        _stateMachine.ChangeTo(new GameEndState(this, VoiceAudioManager, RestartGame));
     }
 
     private void RestartGame()
