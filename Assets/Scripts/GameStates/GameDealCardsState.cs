@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class GameDealCardsState : State<GameManager>
+public class GameDealCardsState : State<GameManager>, IDisposable
 {
     private readonly LevelLayout _layout;
     private readonly Card _cardPrefab;
@@ -11,6 +13,8 @@ public class GameDealCardsState : State<GameManager>
     private readonly SpritesCollectionSO _symbolsSprites;
     private readonly Card.CardsArgs _onCardsDealtHandler;
     private readonly VoiceAudioManager _voiceAudioManager;
+    
+    private readonly CancellationTokenSource _cancellationToken = new CancellationTokenSource();
 
     public GameDealCardsState(
         GameManager owner,
@@ -75,6 +79,7 @@ public class GameDealCardsState : State<GameManager>
         _voiceAudioManager.PlayStarting(VoiceAudioManager.StartingPhase.Ready);
 
         await Task.WhenAll(Task.Delay(3000), startingPanel.Show());
+        if (_cancellationToken.IsCancellationRequested) return;
         
         foreach (var card in dealtCards) card.HideCard();
         
@@ -82,6 +87,7 @@ public class GameDealCardsState : State<GameManager>
         _voiceAudioManager.PlayStarting(VoiceAudioManager.StartingPhase.Set);
         
         await Task.Delay(1000);
+        if (_cancellationToken.IsCancellationRequested) return;
         
         startingPanel.SetMessage("Go!");
         _voiceAudioManager.PlayStarting(VoiceAudioManager.StartingPhase.Go);
@@ -89,6 +95,7 @@ public class GameDealCardsState : State<GameManager>
         _onCardsDealtHandler?.Invoke(dealtCards);
         
         await startingPanel.Hide(1000);
+        if (_cancellationToken.IsCancellationRequested) return;
     }
 
     public override void Update()
@@ -99,5 +106,10 @@ public class GameDealCardsState : State<GameManager>
     public override void Exit()
     {
         //
+    }
+
+    public void Dispose()
+    {
+        _cancellationToken.Cancel();
     }
 }

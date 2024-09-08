@@ -1,11 +1,14 @@
 using System;
+using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-public class GameRunningState : State<GameManager>
+public class GameRunningState : State<GameManager>, IDisposable
 {
     private readonly VoiceAudioManager _voiceAudioManager;
     private readonly Action _onScoreHandler;
     private readonly Action _onAllCardsMatchedHandler;
+    
+    private readonly CancellationTokenSource _cancellationToken = new CancellationTokenSource();
     
     private Card _currentSelectedCard;
 
@@ -67,6 +70,7 @@ public class GameRunningState : State<GameManager>
         _voiceAudioManager.PlayCorrect();
                     
         await Task.Delay(500);
+        if (_cancellationToken.IsCancellationRequested) return;
 
         previousCard.Destroy();
         currentCard.Destroy();
@@ -79,8 +83,14 @@ public class GameRunningState : State<GameManager>
         _voiceAudioManager.PlayWrong();
         
         await Task.Delay(500);
+        if (_cancellationToken.IsCancellationRequested) return;
 
         previousCard.HideCard();
         currentCard.HideCard();
+    }
+
+    public void Dispose()
+    {
+        _cancellationToken.Cancel();
     }
 }
